@@ -5,14 +5,6 @@ description: 'Installs just'
 runs:
   using: "composite"
   steps:
-    - run: |
-        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-        echo "HOMEBREW_PREFIX=$(/home/linuxbrew/.linuxbrew/bin/brew --prefix)" >> $GITHUB_ENV
-        echo "$(/home/linuxbrew/.linuxbrew/bin/brew --prefix)/bin" >> $GITHUB_PATH
-      shell: bash  
-    - name: install just
-      run: /home/linuxbrew/.linuxbrew/bin/brew install just
-      shell: bash
-    
+    - uses: extractions/setup-just@v3
     - run: just --version
       shell: bash
